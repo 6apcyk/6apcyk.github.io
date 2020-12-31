@@ -549,7 +549,7 @@
   You can check the spread of values by switching the option<br>
   below and calculating the result several times.<br>
   Margin of error calculated as 2.5% from average value<br>
-  since 90% of spread included in that margin</i><br>
+  since 90% of spread included in these boundaries</i><br>
   <b>Sapphires per hit:</b>
   <table>
   <td><input id="drop1" name="sappdrop" type="radio" value="avg" checked>Average (60)</td>
