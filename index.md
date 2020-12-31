@@ -443,7 +443,7 @@
 	if (tmp2 > 0){
 	  tmp2 = tmp2+'h '+ Math.trunc(tmp1 % 60) +'m';
 	} else {
-	  tmp2 = Math.trunc(tmp % 60) +'m';
+	  tmp2 = Math.trunc(tmp1 % 60) +'m';
 	}
 	if (drop){
 	  row.children[2].innerText = '±'+tmp2;  
