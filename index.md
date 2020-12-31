@@ -55,6 +55,9 @@
 	11:"11m",
 	12:"12m"
   }
+  
+  droprates = [0.15, 0.70, 0.85, 0.95, 1]
+  dropvalues = [25, 50, 75, 100, 150]
 
   //перечень id картинок, закодированных в BASE64
   var images = ["powerpic","maxenergypic","cooldownpic","energypic","sapphirepic","gempic"]
@@ -290,10 +293,26 @@
 	}
   }
   
+  function randomdrop(num=1){
+    let sum = 0, tmp1, tmp2;
+	for (let i = 0; i < num; i++){
+	  tmp1 = Math.random();
+	  for (let j = droprates.length - 1; j >= 0; j--){
+	    if (tmp1 <= droprates[j]){
+		  tmp2 = dropvalues[j];
+		} else {
+		  break;
+		}
+	  }
+	  sum += tmp2
+	}
+	return (sum)
+  }
 
   //считалка того, сколько времени понадобится на завершение события
   var sapphiresavg = 60;
   const bosshealth = 61000;
+  var drop;
   function calctime(){
     var totaldmg = 0;
     var timetaken = 0;
@@ -303,6 +322,7 @@
   	let p = Number(document.getElementById("power").value);
 	let e = Number(document.getElementById("maxenergy").value);
 	let t = Number(document.getElementById("time").value);
+	drop = document.getElementById("drop1").checked;
 	let pows = getIndexes(p, 0);
 	let nrgs = getIndexes(e, 1);
 	let cooldowns = getIndexes(t, 2);
@@ -328,7 +348,11 @@
 	for (i = n; i <vals.length; i++){
 	  while ((sapphiresleft < vals[i+1][3])&&(totaldmg < bosshealth)) {
         totaldmg += vals[i][0] + helpers;
-		sapphiresleft += sapphiresavg;
+		if (drop){
+		  sapphiresleft += sapphiresavg;
+		} else{
+		  sapphiresleft += randomdrop();
+		}
 		if (storedenergy >0){
 		  storedenergy -= 1;
 		} else {
@@ -359,12 +383,20 @@
       if (storedenergy>0){
 	    storedenergy -= 1;
 		totaldmg += vals[index][0]+helpers;
-		sapphiresleft += sapphiresavg
+		if (drop){
+		  sapphiresleft += sapphiresavg;
+		} else{
+		  sapphiresleft += randomdrop();
+		}
 	  } else {
 		let mult = Math.ceil((bosshealth - totaldmg)/(vals[index][0]+helpers));
 	    totaldmg += mult*(vals[index][0]+helpers)
 		timetaken += mult*vals[index][2];
-	    sapphiresleft += mult*sapphiresavg;
+		if (drop){
+		  sapphiresleft += mult*sapphiresavg;
+		} else{
+		  sapphiresleft += randomdrop(mult);
+		}
 	  }
 	}
 	for (i = 0; i <fixedv.length; i++){
@@ -451,7 +483,7 @@
    <h1 id="result" style="width:250px" align="center"></h1>
    
   <p><input type="button" value="Calculate" onclick="calctime()"></p>
-    
+  
   <table><thead align="center"><tr>
   <th colspan="2"></th>
   <td colspan="3" style="width:80px" align="center">Stop upgrading at:</td></tr>
@@ -491,6 +523,17 @@
   <td></td>
   </tr>
   </tbody>
-  </table>
+  </table><br>
+  *All calculations are approximate, actual times depend<br>
+  on your luck with number of sapphires dropping for every<br>
+  hit (plus any additional energy and sapphires picked from area)<br>
+  You can check the spread of values by switching the option<br>
+  below and calculating the result several times<br>
+  <table>
+  <tr><td><b>Sapphires per hit:</b></td></tr>
+  <tr>
+  <td><input id="drop1" name="sappdrop" type="radio" value="avg" checked>Average (60)</td>
+  <td><input id="drop2" name="sappdrop" type="radio" value="rand">Random (25-150)</td>
+  </tr></table>
 </body>
 </html>
