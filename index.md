@@ -371,7 +371,15 @@
 	  storedenergy += vals[i+1][1] - vals[i][1]
 	}
 	result = document.getElementById("result");
-	result.innerText = Math.trunc(timetaken / 60)+'h '+ Math.trunc(timetaken % 60) +'m';
+	marginoferror = timetaken*0.055;
+	print1 = Math.trunc(timetaken / 60)+'h '+ Math.trunc(timetaken % 60) +'m';
+	print2 = Math.trunc(marginoferror / 60)+'h '+ Math.trunc(marginoferror % 60) +'m';
+	if (drop){
+	  result.innerText = print1 + '    (±'+print2+')';
+	} else {
+	  result.innerText = print1;
+	}
+	
 	setgems();
   }
   
@@ -425,9 +433,13 @@
   function fillgemtarget(index, time, gemid){
     row = document.getElementById(gemid);
 	row.children[1].innerText = Math.trunc(time / 60)+'h '+ Math.trunc(time % 60) +'m';
-	row.children[2].innerText = vals[index][0];
-	row.children[3].innerText = vals[index][1];
-	row.children[4].innerText = times[vals[index][2]];
+	let tmp = time*0.025 //90% значений обретаются не далее, чем в 2,5% от среднего
+	if (drop){
+	  row.children[2].innerText = '±'+Math.trunc(tmp / 60)+'h '+ Math.trunc(tmp % 60) +'m';  
+	}	
+	row.children[3].innerText = vals[index][0];
+	row.children[4].innerText = vals[index][1];
+	row.children[5].innerText = times[vals[index][2]];
   }
   //...или ставит там "низзя", если такое число камней невозможно 
   //получить при выбранных условиях
@@ -485,17 +497,19 @@
   <p><input style="width:450px" type="button" value="Calculate" onclick="calctime()"></p>
   
   <table><thead align="center"><tr>
-  <th colspan="2"></th>
+  <th colspan="3"></th>
   <td colspan="3" style="width:80px" align="center">Stop upgrading at:</td></tr>
   <tr>
-  <th style="vertical-align:bottom width:20px">Extra gems</th>
-  <th style="vertical-align:bottom width:60px">Time to reach</th>
+  <th style="vertical-align:bottom width:20px">Extra<br>gems</th>
+  <th style="vertical-align:bottom width:60px">Time<br>to reach</th>
+  <th style="vertical-align:bottom width:60px">Margin<br>of error</th>
   <th><img name="powerpic" src="" alt="Power" /></th>
   <th><img name="maxenergypic" src="" alt="Max energy" /></th>
   <th><img name="cooldownpic" src="" alt="Cooldown time" /></th>
   </tr></thead>
   <tbody align="center"><tr id="gem50000">
   <td><img name="gempic" src="" alt="Gems" /><b>20</b></td>
+  <td></td>
   <td></td>
   <td></td>
   <td></td>
@@ -507,9 +521,11 @@
   <td></td>
   <td></td>
   <td></td>
+  <td></td>
   </tr>
   <tr id="gem10000">
   <td><img name="gempic" src="" alt="Gems" /><b>10</b></td>
+  <td></td>
   <td></td>
   <td></td>
   <td></td>
@@ -521,14 +537,15 @@
   <td></td>
   <td></td>
   <td></td>
+  <td></td>
   </tr>
   </tbody>
   </table><br>
-  All calculations are approximate, actual times depend on<br>
+  <i>All calculations are approximate, actual times depend on<br>
   your luck with number of sapphires dropping for every hit<br>
   (plus any additional energy and sapphires picked from area)<br>
   You can check the spread of values by switching the option<br>
-  below and calculating the result several times<br>
+  below and calculating the result several times</i><br>
   <b>Sapphires per hit:</b>
   <table>
   <td><input id="drop1" name="sappdrop" type="radio" value="avg" checked>Average (60)</td>
