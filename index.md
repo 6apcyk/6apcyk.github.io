@@ -371,7 +371,7 @@
 	  storedenergy += vals[i+1][1] - vals[i][1]
 	}
 	result = document.getElementById("result");
-	marginoferror = timetaken*0.055;
+	marginoferror = timetaken*0.025;
 	print1 = Math.trunc(timetaken / 60)+'h '+ Math.trunc(timetaken % 60) +'m';
 	print2 = Math.trunc(marginoferror / 60)+'h '+ Math.trunc(marginoferror % 60) +'m';
 	if (drop){
