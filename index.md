@@ -545,7 +545,9 @@
   your luck with number of sapphires dropping for every hit<br>
   (plus any additional energy and sapphires picked from area)<br>
   You can check the spread of values by switching the option<br>
-  below and calculating the result several times</i><br>
+  below and calculating the result several times.<br>
+  Margin of error calculated as 2.5% from average value<br>
+  since 90% of spread included in that margin</i><br>
   <b>Sapphires per hit:</b>
   <table>
   <td><input id="drop1" name="sappdrop" type="radio" value="avg" checked>Average (60)</td>
