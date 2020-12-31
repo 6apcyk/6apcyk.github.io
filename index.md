@@ -529,11 +529,10 @@
   hit (plus any additional energy and sapphires picked from area)<br>
   You can check the spread of values by switching the option<br>
   below and calculating the result several times<br>
+  <b>Sapphires per hit:</b><br>
   <table>
-  <tr><td><b>Sapphires per hit:</b></td></tr>
-  <tr>
   <td><input id="drop1" name="sappdrop" type="radio" value="avg" checked>Average (60)</td>
   <td><input id="drop2" name="sappdrop" type="radio" value="rand">Random (25-150)</td>
-  </tr></table>
+  </table>
 </body>
 </html>
