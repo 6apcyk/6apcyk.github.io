@@ -395,7 +395,7 @@
 	row.children[1].innerText = Math.trunc(time / 60)+'h '+ Math.trunc(time % 60) +'m';
 	row.children[2].innerText = vals[index][0];
 	row.children[3].innerText = vals[index][1];
-	row.children[4].innerText = vals[index][2];
+	row.children[4].innerText = times[vals[index][2]];
   }
   //...или ставит там "низзя", если такое число камней невозможно 
   //получить при выбранных условиях
@@ -425,7 +425,7 @@
   <tr>
   <th align="center"><img name="powerpic" src="" alt="Power" /></th>
   <th align="center"><img name="maxenergypic" src="" alt="Max energy" /></th>
-  <th align="center" style="width:100px"><img name="cooldownpic" src="" alt="Cooldown time" /></th>
+  <th align="center" style="width:80px"><img name="cooldownpic" src="" alt="Cooldown time" /></th>
   <th style="border-left: 3px double #000;" align="right" ><img name="energypic" src="" alt="Current energy" /></th>
   <th align="center"><img name="sapphirepic" src="" alt="Current sapphires" /></th>
   </tr></thead>
@@ -434,7 +434,7 @@
   <td align="center"><select id="maxenergy" style="width:60px" onchange="processETOptions(1)" disabled>
     <option>10</option>
   </select></td>
-  <td align="left"><select id="time" style="width:70px" onchange="processETOptions(2)" disabled>
+  <td align="left"><select id="time" style="width:80px" onchange="processETOptions(2)" disabled>
 	<option value="12">12m</option>
    </select></td>
   <td align="right" style="width:65px; border-left: 3px double #000;"><input id="curenergy" type="number" value="0" min="0" max="197" style="width:50px"/></td>
@@ -456,11 +456,11 @@
   <th colspan="2"></th>
   <td colspan="3" style="width:80px" align="center">Stop upgrading at:</td></tr>
   <tr>
-  <th style="vertical-align:bottom width:50px">Extra gems</th>
-  <th style="vertical-align:bottom width:100px">Time to reach</th>
+  <th style="vertical-align:bottom width:40px">Extra gems</th>
+  <th style="vertical-align:bottom width:80px">Time to reach</th>
   <th><img name="powerpic" src="" alt="Power" /></th>
   <th><img name="maxenergypic" src="" alt="Max energy" /></th>
-  <th style="width:80px"><img name="cooldownpic" src="" alt="Cooldown time" /></th>
+  <th><img name="cooldownpic" src="" alt="Cooldown time" /></th>
   </tr></thead>
   <tbody align="center"><tr id="gem50000">
   <td><img name="gempic" src="" alt="Gems" /><b>20</b></td>
