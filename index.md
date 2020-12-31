@@ -441,7 +441,7 @@
 	let tmp1 = time*0.025 //90% значений обретаются не далее, чем в 2,5% от среднего
 	let tmp2 = Math.trunc(tmp1 / 60)
 	if (tmp2 > 0){
-	  tmp2 = tmp2+'h '+ Math.trunc(tmp % 60) +'m';
+	  tmp2 = tmp2+'h '+ Math.trunc(tmp1 % 60) +'m';
 	} else {
 	  tmp2 = Math.trunc(tmp % 60) +'m';
 	}
