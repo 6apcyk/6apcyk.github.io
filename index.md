@@ -436,7 +436,9 @@
 	let tmp = time*0.025 //90% значений обретаются не далее, чем в 2,5% от среднего
 	if (drop){
 	  row.children[2].innerText = '±'+Math.trunc(tmp / 60)+'h '+ Math.trunc(tmp % 60) +'m';  
-	}	
+	} else {
+	  row.children[2].innerText = '';
+	}
 	row.children[3].innerText = vals[index][0];
 	row.children[4].innerText = vals[index][1];
 	row.children[5].innerText = times[vals[index][2]];
