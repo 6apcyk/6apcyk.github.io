@@ -373,7 +373,12 @@
 	result = document.getElementById("result");
 	marginoferror = timetaken*0.025;
 	print1 = Math.trunc(timetaken / 60)+'h '+ Math.trunc(timetaken % 60) +'m';
-	print2 = Math.trunc(marginoferror / 60)+'h '+ Math.trunc(marginoferror % 60) +'m';
+	let tmp = Math.trunc(marginoferror / 60);
+	if (tmp>0){
+	  print2 = Math.trunc(marginoferror / 60)+'h '+ Math.trunc(marginoferror % 60) +'m';
+	} else {
+	  print2 = Math.trunc(marginoferror % 60) +'m';
+	}
 	if (drop){
 	  result.innerText = print1 + '    (±'+print2+')';
 	} else {
@@ -433,9 +438,15 @@
   function fillgemtarget(index, time, gemid){
     row = document.getElementById(gemid);
 	row.children[1].innerText = Math.trunc(time / 60)+'h '+ Math.trunc(time % 60) +'m';
-	let tmp = time*0.025 //90% значений обретаются не далее, чем в 2,5% от среднего
+	let tmp1 = time*0.025 //90% значений обретаются не далее, чем в 2,5% от среднего
+	let tmp2 = Math.trunc(tmp1 / 60)
+	if (tmp2 > 0){
+	  tmp2 = tmp2+'h '+ Math.trunc(tmp % 60) +'m';
+	} else {
+	  tmp2 = Math.trunc(tmp % 60) +'m';
+	}
 	if (drop){
-	  row.children[2].innerText = '±'+Math.trunc(tmp / 60)+'h '+ Math.trunc(tmp % 60) +'m';  
+	  row.children[2].innerText = '±'+tmp2;  
 	} else {
 	  row.children[2].innerText = '';
 	}
