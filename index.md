@@ -480,9 +480,9 @@
    <p><b>Stage 2</b> completed: <input id="s3" type="checkbox" onchange="checkoption(3)"> or damage dealt: <input id="s2" type="number" value="0" min="0" max="9999" style="width:70px" onchange="checkoption(2)"/></p>
    <p><b>Stage 3</b> damage dealt: <input id="s4" type="number" value="0" min="0" max="49999" style="width:70px" onchange="checkoption(4)"/></p>
    
-   <h1 id="result" style="width:350px" align="center"></h1>
+   <h1 id="result" style="width:450px" align="center"></h1>
    
-  <p><input style="width:350px" type="button" value="Calculate" onclick="calctime()"></p>
+  <p><input style="width:450px" type="button" value="Calculate" onclick="calctime()"></p>
   
   <table><thead align="center"><tr>
   <th colspan="2"></th>
