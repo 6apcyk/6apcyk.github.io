@@ -425,7 +425,7 @@
   <tr>
   <th align="center"><img name="powerpic" src="" alt="Power" /></th>
   <th align="center"><img name="maxenergypic" src="" alt="Max energy" /></th>
-  <th align="center" style="width:90px"><img name="cooldownpic" src="" alt="Cooldown time" /></th>
+  <th align="center" style="width:100px"><img name="cooldownpic" src="" alt="Cooldown time" /></th>
   <th style="border-left: 3px double #000;" align="right" ><img name="energypic" src="" alt="Current energy" /></th>
   <th align="center"><img name="sapphirepic" src="" alt="Current sapphires" /></th>
   </tr></thead>
@@ -437,7 +437,7 @@
   <td align="left"><select id="time" style="width:70px" onchange="processETOptions(2)" disabled>
 	<option value="12">12m</option>
    </select></td>
-  <td align="right" style="width:65px; border-left: 3px double #000;"><input id="curenergy" type="number" value="0" min="0" style="width:50px"/></td>
+  <td align="right" style="width:65px; border-left: 3px double #000;"><input id="curenergy" type="number" value="0" min="0" max="197" style="width:50px"/></td>
   <td><input id="cursapphires" type="number" value="0" min="0" max="250000" style="width:80px"/></td>
   </tr></tbody></table>
    
@@ -452,18 +452,19 @@
    
   <p><input type="button" value="Calculate" onclick="calctime()"></p>
     
-  <table><thead><tr>
-  <th colspan="2" align="center"></th>
-  <td colspan="3" align="center">You should stop upgrading at:</td></tr>
+  <table><thead align="center"><tr>
+  <th colspan="2"></th>
+  <td colspan="3" style="width:80px" align="center">Stop upgrading at:</td></tr>
   <tr>
-  <th colspan="2" align="left" style="vertical-align:bottom">Extra<br>gems</th>
+  <th style="vertical-align:bottom width:50px">Extra gems</th>
+  <th style="vertical-align:bottom width:100px">Time to reach</th>
   <th><img name="powerpic" src="" alt="Power" /></th>
   <th><img name="maxenergypic" src="" alt="Max energy" /></th>
   <th style="width:80px"><img name="cooldownpic" src="" alt="Cooldown time" /></th>
   </tr></thead>
   <tbody align="center"><tr id="gem50000">
   <td><img name="gempic" src="" alt="Gems" /><b>20</b></td>
-  <td style="width:90px"></td>
+  <td></td>
   <td></td>
   <td></td>
   <td></td>
